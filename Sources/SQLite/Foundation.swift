@@ -45,15 +45,15 @@ extension Data : Value {
 extension Date : Value {
 
     public static var declaredDatatype: String {
-        return String.declaredDatatype
+        return Int64.declaredDatatype
     }
 
-    public static func fromDatatypeValue(_ stringValue: String) -> Date {
-        return dateFormatter.date(from: stringValue)!
+    public static func fromDatatypeValue(_ since1970: Int64) -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(since1970))
     }
 
-    public var datatypeValue: String {
-        return dateFormatter.string(from: self)
+    public var datatypeValue: Int64 {
+        return Int64(self.timeIntervalSince1970)
     }
 
 }
